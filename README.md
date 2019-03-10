@@ -1,6 +1,3 @@
-Project with Event Registry API data
-==============================
-
 Project Organization
 ------------
 
@@ -28,6 +25,8 @@ After cloning the repo your python (project has been tested with Python 3.6) nee
 ```bash
 ln -s /path/to/my/phq_utils /path/to/anaconda/lib/python3.6/site-packages/
 ```
+
+The project use various python packages among which: pandas, scikit-learn, spacy, gensim, nltk, keras, lightgbm, seaborn
     
 
 
