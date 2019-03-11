@@ -6,7 +6,7 @@ class ColumnExtractor(TransformerMixin):
     def __init__(self, col, *args, **kwargs):
         self.col = col
     def transform(self, X, y=None):
-        return X[self.col].fillna('missing')
+        return X[self.col]
     def fit(self, X, y=None, *args, **kwargs):
         return self
 
@@ -14,11 +14,12 @@ import numpy as np
 import collections, itertools
 
 class MostCommonEntity(TransformerMixin):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, th=500, *args, **kwargs):
         self.most_commons = None
+        self.th = th
     def fit(self, X, y=None):
         occurence = collections.Counter(list(itertools.chain(*X)))
-        self.most_commons = [k for k, v in occurence.most_common()[:500]]
+        self.most_commons = [k for k, v in occurence.most_common()[:self.th]]
         return self
     def transform(self, X, y=None):
         val = []
